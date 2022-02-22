@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import Test from './Test';
 import NewTest from './Wealth';
 import Inequality from './Inequality';
+import Unions from './Unions';
+import Debt from './Debt';
 import './App.css'
 
 function App() {
@@ -12,6 +14,8 @@ function App() {
     <div className="App">
       <NewTest />
       <Inequality />
+      <Unions />
+      <Debt />
     </div>
   )
 }
