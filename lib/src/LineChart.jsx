@@ -40,8 +40,8 @@ function LineChart(data, {
   if (yDomain === undefined) yDomain = [0, d3.max(Y)];
 
   // console.log('xDomain: ', xDomain)
-  console.log('yDomain: ', yDomain)
-  console.log('yRange: ', yRange)
+  // console.log('yDomain: ', yDomain)
+  // console.log('yRange: ', yRange)
 
   // Construct scales and axes.
   const xScale = xType(xDomain, xRange);

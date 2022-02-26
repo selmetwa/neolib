@@ -27,7 +27,6 @@ const Inequality = () => {
 
   useEffect(() => {
     d3.csv('./public/inequality.csv').then(data => {
-      console.log('data: ', data)
       let intViewportWidth = window.innerWidth;
 
       const w = intViewportWidth / 2;
@@ -53,10 +52,8 @@ const Inequality = () => {
       ]
 
       const groupsToRender = groups.filter(g => activeGroups.includes(g.name))
-      console.log('groupsToRender: ', groupsToRender)
 
       const groupsToRenderData = groupsToRender.map(g => g.group).flat()
-      console.log('groupsToRenderData: ', groupsToRenderData)
 
       const svg = d3.select(svgRef.current)
         .attr('width', w)
@@ -65,8 +62,6 @@ const Inequality = () => {
         .style('margin-top', '50')
         .style('margin-bottom', '50')
         .style('overflow', 'visible')
-
-      console.log('svg: ', svg)
 
 
       const xScale = d3.scaleLinear()

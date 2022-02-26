@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: row;
   margin: 2em auto;
-  border: 1px solid red;
 }
 
 h3 {
@@ -21,6 +20,7 @@ svg {
   border: 1px solid #ccc;
   margin-left: 2.5em;
   padding: 1em;
+  white-space: nowrap;
   height: min-content;
 }
 

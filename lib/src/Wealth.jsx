@@ -139,8 +139,6 @@ const NewTest = () => {
 
   return (
     <section className="wrapper">
-
-      {/* <h3>{metric}</h3> */}
       <svg ref={svgRef}></svg>
       <aside className="aside">
         <div className="aside-text">

@@ -5,6 +5,10 @@ import NewTest from './Wealth';
 import Inequality from './Inequality';
 import Unions from './Unions';
 import Debt from './Debt';
+import Taxes from './Taxes'
+import Millitary from './Millitary';
+import Productivity from './Productivity';
+import ProductivityWages from './ProductivityWages';
 import './App.css'
 
 function App() {
@@ -16,6 +20,10 @@ function App() {
       <Inequality />
       <Unions />
       <Debt />
+      <Taxes />
+      <Millitary />
+      <Productivity />
+      <ProductivityWages />
     </div>
   )
 }
