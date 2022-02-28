@@ -87,8 +87,7 @@ const NewTest = () => {
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)
-        .style('background', '#ddd')
-        // .style('margin-top', '50')
+        .style('background', '#f5f5f5')
         .style('overflow', 'visible')
 
       console.log('svg: ', svg)

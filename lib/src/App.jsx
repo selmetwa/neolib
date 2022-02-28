@@ -1,31 +1,29 @@
-import { useState } from 'react'
-import logo from './logo.svg';
-import Test from './Test';
-import NewTest from './Wealth';
-import Inequality from './Inequality';
-import Unions from './Unions';
-import Debt from './Debt';
-import Taxes from './Taxes'
-import Millitary from './Millitary';
-import Productivity from './Productivity';
-import ProductivityWages from './ProductivityWages';
-import './App.css'
+import Wealth from "./Wealth";
+import Inequality from "./Inequality";
+import SingleLineChart from "./SingleLineChart";
+import DoubleLineChart from "./DoubleLineChart";
+import singleLineCharts from "./singleCharts";
+import doubleCharts from './doubleCharts';
+import ServiceManufactor from './ServiceManufactor'
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <NewTest />
+    <div className='App'>
+      <Wealth />
       <Inequality />
-      <Unions />
-      <Debt />
-      <Taxes />
-      <Millitary />
-      <Productivity />
-      <ProductivityWages />
+      {doubleCharts.map((obj) => {
+        const {title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName} = obj;
+        return <DoubleLineChart {...{title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName }} />
+      })}
+      <ServiceManufactor />
+
+      {singleLineCharts.map((obj) => {
+        const {title, fileName, time, yValue} = obj;
+        return <SingleLineChart {...{title, fileName, time, yValue}} />
+      })}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

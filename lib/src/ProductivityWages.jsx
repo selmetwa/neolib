@@ -23,14 +23,11 @@ const ProductivityWages = () => {
       ]
 
       setGroups(g)
-      console.log('productivity: ', productivity)
-      console.log('wages: ', wages)
 
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)
         .style('background', '#ddd')
-        // .style('margin-top', '50')
         .style('margin-bottom', '50')
         .style('overflow', 'visible')
 
@@ -77,28 +74,27 @@ const ProductivityWages = () => {
 
     })
   }, []);
-  
+
   if (groups) {
     return (
       <section className="wrapper">
         <svg ref={svgRef} />
         <aside className="aside">
-        <div className="aside-text">
-          <h1>Productivity-median hourly compensation</h1>
-          <h3>From 1976 to 2021</h3>
-        </div>
-        <div className="checkboxes">
-          {groups.map(group => {
-            return (
-              <div key={group} className="checkbox">
-                {/* <input type="checkbox" value={group} /> */}
-                <div className="circle" style={{ backgroundColor: group.color }} />
-                <label htmlFor="scales">{group.name}</label>
-              </div>
-            )
-          })}
-        </div>
-      </aside>
+          <div className="aside-text">
+            <h1>Productivity-median hourly compensation</h1>
+            <h3>From 1976 to 2021</h3>
+          </div>
+          <div className="checkboxes">
+            {groups.map(group => {
+              return (
+                <div key={group} className="checkbox">
+                  <div className="circle" style={{ backgroundColor: group.color }} />
+                  <label htmlFor="scales">{group.name}</label>
+                </div>
+              )
+            })}
+          </div>
+        </aside>
       </section>
     )
   }

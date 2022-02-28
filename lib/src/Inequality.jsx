@@ -58,7 +58,7 @@ const Inequality = () => {
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)
-        .style('background', '#ddd')
+        .style('background', '#f5f5f5')
         .style('margin-top', '50')
         .style('margin-bottom', '50')
         .style('overflow', 'visible')
