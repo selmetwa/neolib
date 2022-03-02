@@ -1,45 +1,45 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-import './wealth.css';
+import '../wealth.css';
 
-const Productivity = () => {
+const DoubleLineChart = ({ title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName }) => {
   const svgRef = useRef();
   const [groups, setGroups] = useState(null);
-
+  const [years, setYears] = useState(null);
+  
   useEffect(() => {
-    d3.csv('../public/productivity.csv').then(data => {
-      console.log('data: ', data);
+    d3.csv(`../public/${fileName}.csv`).then(data => {
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
 
-      const years = data.map(d => d['year'])
-      const productivity = data.map(d => d['  productivity growth'].replace(/ /g, '').substring(0, d['  productivity growth'].replace(/ /g, '').length - 1))
-      const wages = data.map(d => d['  wage growth'].replace(/ /g, '').substring(0, d['  wage growth'].replace(/ /g, '').length - 1));
+      const years = data.map(d => d[time])
+      const lineOneData = data.map(d => d[lineOne].replace(/ /g, '').substring(0, d[lineOne].replace(/ /g, '').length - 1))
+      const lineTwoData = data.map(d => d[lineTwo].replace(/ /g, '').substring(0, d[lineTwo].replace(/ /g, '').length - 1));
 
+      const max = [...lineOneData].sort((a,b) => b-a)[0];
+      
       const g = [
-        { group: productivity, color: 'red', name: 'Productivity' },
-        { group: wages, color: 'blue', name: 'Wages' },
+        { group: lineOneData, color: 'red', name: lineOneName },
+        { group: lineTwoData, color: 'blue', name: lineTwoName },
       ]
 
       setGroups(g)
-      console.log('productivity: ', productivity)
-      console.log('wages: ', wages)
+      setYears(years);
 
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)
-        .style('background', '#ddd')
-        // .style('margin-top', '50')
+        .style('background', '#f5f5f5')
         .style('margin-bottom', '50')
         .style('overflow', 'visible')
 
       const xScale = d3.scaleLinear()
-        .domain([0, productivity.length - 1])
+        .domain([0, lineOneData.length - 1])
         .range([0, w])
 
       const yScale = d3.scaleLinear()
-        .domain([0, 200])
+        .domain([0, max])
         .range([h, 0])
 
       const generateScaledLine = d3.line()
@@ -74,18 +74,17 @@ const Productivity = () => {
           .attr('stroke', group.color)
           .attr("stroke-width", 1.5)
       })
-
-    })
+    });
   }, []);
-  
-  if (groups) {
+
+  if (groups && years) {
     return (
       <section className="wrapper">
         <svg ref={svgRef} />
         <aside className="aside">
         <div className="aside-text">
-          <h1>Productivity Growth</h1>
-          <h3>From 1976 to 2021</h3>
+          <h1>{title}</h1>
+          <h3>From {years[0]} to {d3.max(years)}</h3>
         </div>
         <div className="checkboxes">
           {groups.map(group => {
@@ -102,7 +101,7 @@ const Productivity = () => {
     )
   }
 
-  return <h1>ads</h1>
+  return null
 }
 
-export default Productivity;
+export default DoubleLineChart;

@@ -1,10 +1,10 @@
-import Wealth from "./Wealth";
-import Inequality from "./Inequality";
-import SingleLineChart from "./SingleLineChart";
-import DoubleLineChart from "./DoubleLineChart";
-import singleLineCharts from "./singleCharts";
-import doubleCharts from './doubleCharts';
-import ServiceManufactor from './ServiceManufactor'
+import Wealth from "./charts/Wealth";
+import Inequality from "./charts/Inequality";
+import SingleLineChart from "./charts/SingleLineChart";
+import DoubleLineChart from "./charts/DoubleLineChart";
+import singleLineCharts from "./constants/singleCharts";
+import doubleCharts from './constants/doubleCharts';
+import ServiceManufactor from './charts/ServiceManufactor';
 import "./App.css";
 
 function App() {

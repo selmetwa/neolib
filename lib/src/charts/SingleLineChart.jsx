@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-import './singleLineChart.css';
+import '../singleLineChart.css';
 
 const SingleLineChart = ({ title, fileName, yValue, time }) => {
   const svgRef = useRef();
 
   useEffect(() => {
     d3.csv(`./public/${fileName}.csv`).then(data => {
-      const w = window.innerWidth / 2;
-      const h = window.innerHeight / 1.5;
+      const w = window.innerWidth / 3;
+      const h = window.innerHeight / 3;
 
       const yData = data.map(d => Number(d[yValue]))
       const years = data.map(d => d[time].slice(0, 4))
@@ -40,11 +40,11 @@ const SingleLineChart = ({ title, fileName, yValue, time }) => {
           .domain([years[0], years[years.length - 1]])
           .range([0, w])
       )
-        .ticks(20)
+        .ticks(10)
         .tickFormat(i => i + 1)
 
       const yAxis = d3.axisLeft(yScale)
-        .ticks(20)
+        .ticks(10)
 
       svg.append('g')
         .call(yAxis)

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-import "./wealth.css";
+import "../wealth.css";
 
 const ServiceManufactor = () => {
   const svgRef = useRef();
@@ -14,16 +14,22 @@ const ServiceManufactor = () => {
         const w = window.innerWidth / 2;
         const h = window.innerHeight / 1.5;
 
-        const years = [...new Set(data1.map((d) => d["date"].slice(0,4)))]
-        const manufactor = data2.map((d) =>
-          Number(d["manufactor"]
-            .replace(/ /g, "")
-            .substring(0, d["manufactor"].replace(/ /g, "").length - 1)) * 500
+        const years = [...new Set(data1.map((d) => d["date"].slice(0, 4)))];
+        const manufactor = data2.map(
+          (d) =>
+            Number(
+              d["manufactor"]
+                .replace(/ /g, "")
+                .substring(0, d["manufactor"].replace(/ /g, "").length - 1)
+            ) * 500
         );
-        const service = data1.map((d) =>
-          Number(d["service"]
-            .replace(/ /g, "")
-            .substring(0, d["service"].replace(/ /g, "").length - 1)) * 1
+        const service = data1.map(
+          (d) =>
+            Number(
+              d["service"]
+                .replace(/ /g, "")
+                .substring(0, d["service"].replace(/ /g, "").length - 1)
+            ) * 1
         );
 
         const g = [
@@ -42,10 +48,7 @@ const ServiceManufactor = () => {
           .style("margin-bottom", "50")
           .style("overflow", "visible");
 
-        const xScale = d3
-          .scaleLinear()
-          .domain([0, 624])
-          .range([0, w]);
+        const xScale = d3.scaleLinear().domain([0, 624]).range([0, w]);
 
         const yScale = d3.scaleLinear().domain([0, 15000]).range([h, 0]);
 
@@ -87,30 +90,34 @@ const ServiceManufactor = () => {
 
   if (groups && years) {
     return (
-      <section className="wrapper">
+      <section className='wrapper'>
         <svg ref={svgRef} />
-        <aside className="aside">
-        <div className="aside-text">
-          <h1>Service vs Manufactoring Jobs</h1>
-          <h3>From {years[0]} to {d3.max(years)}</h3>
-        </div>
-        <div className="checkboxes">
-          {groups.map(group => {
-            return (
-              <div key={group} className="checkbox">
-                <div className="circle" style={{ backgroundColor: group.color }} />
-                <label htmlFor="scales">{group.name}</label>
-              </div>
-            )
-          })}
-        </div>
-      </aside>
+        <aside className='aside'>
+          <div className='aside-text'>
+            <h1>Service vs Manufactoring Jobs</h1>
+            <h3>
+              From {years[0]} to {d3.max(years)}
+            </h3>
+          </div>
+          <div className='checkboxes'>
+            {groups.map((group) => {
+              return (
+                <div key={group} className='checkbox'>
+                  <div
+                    className='circle'
+                    style={{ backgroundColor: group.color }}
+                  />
+                  <label htmlFor='scales'>{group.name}</label>
+                </div>
+              );
+            })}
+          </div>
+        </aside>
       </section>
-    )
-
+    );
   }
 
-  return <h1>asd</h1>
+  return null;
 };
 
 export default ServiceManufactor;
