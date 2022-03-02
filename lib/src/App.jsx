@@ -5,6 +5,7 @@ import DoubleLineChart from "./charts/DoubleLineChart";
 import singleLineCharts from "./constants/singleCharts";
 import doubleCharts from './constants/doubleCharts';
 import ServiceManufactor from './charts/ServiceManufactor';
+import SingleLineChartsWrapper from "./SingleChartsWrapper";
 import "./App.css";
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
       })}
       <ServiceManufactor />
 
-      {singleLineCharts.map((obj) => {
+      <SingleLineChartsWrapper />
+      {/* {singleLineCharts.map((obj) => {
         const {title, fileName, time, yValue} = obj;
         return <SingleLineChart {...{title, fileName, time, yValue}} />
-      })}
+      })} */}
     </div>
   );
 }

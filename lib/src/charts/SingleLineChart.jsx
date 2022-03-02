@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
 import '../singleLineChart.css';
@@ -9,7 +9,7 @@ const SingleLineChart = ({ title, fileName, yValue, time }) => {
   useEffect(() => {
     d3.csv(`./public/${fileName}.csv`).then(data => {
       const w = window.innerWidth / 3;
-      const h = window.innerHeight / 3;
+      const h = window.innerHeight / 2.5;
 
       const yData = data.map(d => Number(d[yValue]))
       const years = data.map(d => d[time].slice(0, 4))
@@ -19,6 +19,7 @@ const SingleLineChart = ({ title, fileName, yValue, time }) => {
         .attr('height', h)
         .style('background', '#f5f5f5')
         .style('border', '1px solid #ccc')
+        .style('margin-bottom', '50px')
         .style('overflow', 'visible')
 
       const xScale = d3.scaleLinear()
