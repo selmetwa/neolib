@@ -6,6 +6,7 @@ import singleLineCharts from "./constants/singleCharts";
 import doubleCharts from './constants/doubleCharts';
 import ServiceManufactor from './charts/ServiceManufactor';
 import SingleLineChartsWrapper from "./SingleChartsWrapper";
+import DoubleChartsWrapper from "./DoubleChartsWrapper";
 import "./App.css";
 
 function App() {
@@ -13,11 +14,12 @@ function App() {
     <div className='App'>
       <Wealth />
       <Inequality />
-      {doubleCharts.map((obj) => {
+      <DoubleChartsWrapper />
+      {/* {doubleCharts.map((obj) => {
         const {title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName} = obj;
         return <DoubleLineChart {...{title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName }} />
       })}
-      <ServiceManufactor />
+      <ServiceManufactor /> */}
 
       <SingleLineChartsWrapper />
       {/* {singleLineCharts.map((obj) => {

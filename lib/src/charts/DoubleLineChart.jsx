@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 
-import '../wealth.css';
+// import '../wealth.css';
+import '../doubleLineChart.css';
 
 const DoubleLineChart = ({ title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName }) => {
   const svgRef = useRef();
@@ -10,8 +11,8 @@ const DoubleLineChart = ({ title, time, fileName, lineOne, lineTwo, lineOneName,
   
   useEffect(() => {
     d3.csv(`../public/${fileName}.csv`).then(data => {
-      const w = window.innerWidth / 2;
-      const h = window.innerHeight / 1.5;
+      const w = window.innerWidth / 2.5;
+      const h = window.innerHeight / 2;
 
       const years = data.map(d => d[time])
       const lineOneData = data.map(d => d[lineOne].replace(/ /g, '').substring(0, d[lineOne].replace(/ /g, '').length - 1))
@@ -53,11 +54,11 @@ const DoubleLineChart = ({ title, time, fileName, lineOne, lineTwo, lineOneName,
           .domain([years[0], years[years.length - 1]])
           .range([0, w])
       )
-        .ticks(15)
+        .ticks(10)
         .tickFormat(i => i + 1)
 
       const yAxis = d3.axisLeft(yScale)
-        .ticks(20)
+        .ticks(10)
 
       svg.append('g')
         .call(yAxis)
@@ -79,24 +80,19 @@ const DoubleLineChart = ({ title, time, fileName, lineOne, lineTwo, lineOneName,
 
   if (groups && years) {
     return (
-      <section className="wrapper">
-        <svg ref={svgRef} />
-        <aside className="aside">
-        <div className="aside-text">
-          <h1>{title}</h1>
-          <h3>From {years[0]} to {d3.max(years)}</h3>
-        </div>
-        <div className="checkboxes">
+      <section className="doubleLineChart">
+        <h3 className="double-title">{title}</h3>
+        <div className="double-checkboxes">
           {groups.map(group => {
             return (
-              <div key={group} className="checkbox">
+              <div key={group} className="double-checkbox">
                 <div className="circle" style={{ backgroundColor: group.color }} />
                 <label htmlFor="scales">{group.name}</label>
               </div>
             )
           })}
         </div>
-      </aside>
+        <svg ref={svgRef} />
       </section>
     )
   }

@@ -1,0 +1,11 @@
+.doubleCharts {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-row: auto auto;
+  margin-top: 54px;
+  column-gap: 1vw;
+  row-gap: 1vw;
+}

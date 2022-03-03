@@ -90,9 +90,9 @@ const ServiceManufactor = () => {
 
   if (groups && years) {
     return (
-      <section className='wrapper'>
+      <div>
         <svg ref={svgRef} />
-        <aside className='aside'>
+        {/* <aside className='aside'>
           <div className='aside-text'>
             <h1>Service vs Manufactoring Jobs</h1>
             <h3>
@@ -112,8 +112,8 @@ const ServiceManufactor = () => {
               );
             })}
           </div>
-        </aside>
-      </section>
+        </aside> */}
+      </div>
     );
   }
 
