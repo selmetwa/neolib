@@ -93,8 +93,8 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
         .join('path')
         .attr('d', d => generateScaledLine(d))
         .attr('fill', 'none')
-        .attr('stroke', 'red')
-        .attr("stroke-width", 1)
+        .attr('stroke', '#3c3b6e')
+        .attr("stroke-width", 2)
     });
   }, [])
 

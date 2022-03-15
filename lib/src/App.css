@@ -3,3 +3,31 @@
   margin: 0;
   padding: 0;
 }
+
+.usa-stars {
+  width: 100%;
+  height: 35vh;
+  background: linear-gradient(324deg, #3c3b6e 4%, transparent 4%) -0.7in 0.43in, linear-gradient(36deg, #3c3b6e 4%, transparent 4%) 0.3in 0.43in, linear-gradient(72deg, #fff 8.5%, transparent 8.5%) 0.3in 0.43in, linear-gradient(288deg, #fff 8.5%, transparent 8.5%) -0.7in 0.43in, linear-gradient(216deg, #fff 7.5%, transparent 7.5%) -0.7in 0.23in, linear-gradient(144deg, #fff 7.5%, transparent 7.5%) 0.3in 0.23in, linear-gradient(324deg, #3c3b6e 4%, transparent 4%) -0.2in 0.93in, linear-gradient(36deg, #3c3b6e 4%, transparent 4%) 0.8in 0.93in, linear-gradient(72deg, #fff 8.5%, transparent 8.5%) 0.8in 0.93in, linear-gradient(288deg, #fff 8.5%, transparent 8.5%) -0.2in 0.93in, linear-gradient(216deg, #fff 7.5%, transparent 7.5%) -0.2in 0.73in, linear-gradient(144deg, #fff 7.5%, transparent 7.5%) 0.8in 0.73in, #3c3b6e;
+  background-size: 1in 1in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usa-stars .text {
+  margin: 0;
+  padding: 0;
+  color: #fafafa;
+  background: #3c3b6e;
+  padding: 0.75em 5em;
+  text-align: left;
+}
+
+.text h1 {
+  font-size: 3em;
+}
+
+.text h3 {
+  font-size: 1.75em;
+  font-weight: 100;
+}
