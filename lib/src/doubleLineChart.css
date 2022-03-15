@@ -1,19 +1,17 @@
 .doubleLineChart {
-  /* border: 1px solid black; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
+  background-color: #fafafa;
+  padding: 1.5em;
 }
 
-.double-title {
+
+/* .double-title {
   border: 1px solid red;
-}
+} */
 
 .double-checkboxes {
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;
-  /* margin-left: 25%; */
 }
 
 .double-checkbox {

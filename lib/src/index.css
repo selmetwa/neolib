@@ -3,5 +3,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  border: 10px solid #f5f5f5;
+  background-color: #fafafa;
+  /* border: 10px solid #f5f5f5; */
 }

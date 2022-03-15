@@ -10,7 +10,7 @@ import "./doubleCharts.css";
 
 const DoubleChartsWrapper = () => (
   <section className="doubleCharts">
-    {doubleCharts.map((obj) => {
+    {doubleCharts.map((obj, i) => {
       const {
         title,
         time,
@@ -24,6 +24,7 @@ const DoubleChartsWrapper = () => (
         <DoubleLineChart
           {...{
             title,
+            i,
             time,
             fileName,
             lineOne,

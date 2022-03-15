@@ -3,9 +3,9 @@
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-row: auto auto;
   margin-top: 54px;
-  column-gap: 1vw;
   row-gap: 1vw;
+  justify-content: space-between;
 }

@@ -5,17 +5,12 @@
   display: grid;
   grid-template-columns: 50% 50%;
   grid-row: auto auto;
-  margin-top: 54px;
-  /* grid-column-gap: 1em;
-  grid-row-gap: 1em; */
 }
 
 .chart {
-  /* border: 1px solid red; */
   background-color: #fafafa;
 }
 
 .dark {
-  /* border: 1px solid red; */
   background-color: #f5f5f5;
 }

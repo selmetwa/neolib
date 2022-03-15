@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-import "../wealth.css";
+import '../doubleLineChart.css';
 
 const ServiceManufactor = () => {
   const svgRef = useRef();
@@ -11,8 +11,8 @@ const ServiceManufactor = () => {
   useEffect(() => {
     d3.csv(`../public/service.csv`).then((data1) => {
       d3.csv(`../public/manufactor.csv`).then((data2) => {
-        const w = window.innerWidth / 2;
-        const h = window.innerHeight / 1.5;
+        const w = window.innerWidth / 4;
+        const h = window.innerHeight / 3;
 
         const years = [...new Set(data1.map((d) => d["date"].slice(0, 4)))];
         const manufactor = data2.map(
@@ -90,29 +90,19 @@ const ServiceManufactor = () => {
 
   if (groups && years) {
     return (
-      <div>
+      <div className='doubleLineChart dark'>
+        <h3 className="double-title">Service jobs</h3>
+        <div className="double-checkboxes">
+          {groups.map(group => {
+            return (
+              <div key={group} className="double-checkbox">
+                <div className="circle" style={{ backgroundColor: group.color }} />
+                <label htmlFor="scales">{group.name}</label>
+              </div>
+            )
+          })}
+        </div>
         <svg ref={svgRef} />
-        {/* <aside className='aside'>
-          <div className='aside-text'>
-            <h1>Service vs Manufactoring Jobs</h1>
-            <h3>
-              From {years[0]} to {d3.max(years)}
-            </h3>
-          </div>
-          <div className='checkboxes'>
-            {groups.map((group) => {
-              return (
-                <div key={group} className='checkbox'>
-                  <div
-                    className='circle'
-                    style={{ backgroundColor: group.color }}
-                  />
-                  <label htmlFor='scales'>{group.name}</label>
-                </div>
-              );
-            })}
-          </div>
-        </aside> */}
       </div>
     );
   }
