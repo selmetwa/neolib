@@ -13,19 +13,8 @@ function App() {
   return (
     <div className='App'>
       <Wealth />
-      <Inequality />
       <DoubleChartsWrapper />
-      {/* {doubleCharts.map((obj) => {
-        const {title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName} = obj;
-        return <DoubleLineChart {...{title, time, fileName, lineOne, lineTwo, lineOneName, lineTwoName }} />
-      })}
-      <ServiceManufactor /> */}
-
       <SingleLineChartsWrapper />
-      {/* {singleLineCharts.map((obj) => {
-        const {title, fileName, time, yValue} = obj;
-        return <SingleLineChart {...{title, fileName, time, yValue}} />
-      })} */}
     </div>
   );
 }

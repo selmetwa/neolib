@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 import '../singleLineChart.css';
 
-const SingleLineChart = ({ title, fileName, yValue, time }) => {
+const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
   const svgRef = useRef();
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const SingleLineChart = ({ title, fileName, yValue, time }) => {
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)
-        .style('background', '#f5f5f5')
-        .style('border', '1px solid #ccc')
+        .style('background', 'transparent')
+        // .style('border', '1px solid #ccc')
         .style('margin-bottom', '50px')
         .style('overflow', 'visible')
 
@@ -44,14 +44,49 @@ const SingleLineChart = ({ title, fileName, yValue, time }) => {
         .ticks(10)
         .tickFormat(i => i + 1)
 
+      // const formatTick = () => {
+      //   if ()
+      // }
+
+      const T = 10000
+      const B = 1000;
+
+      function numFormatter(num) {
+        if(num > B && num < T){
+            return (num).toFixed(0).slice(0,2) + 'B'; // convert to K for number from > 1000 < 1 million 
+        }else if(num > T){
+            return (num).toFixed(0).slice(0,2) + 'T'; // convert to M for number from > 1 million 
+        }
+    }
+
+      const sign = fileName === 'millitary' || fileName === 'debt' ? '$' : '';
+
+      const formatTick = (x) => {
+        if (fileName === 'debt') {
+          return `${sign}${numFormatter(x)}${yLabel}`;
+        }
+
+        return `${sign}${x.toFixed(0)}${yLabel}`;
+      }
+
       const yAxis = d3.axisLeft(yScale)
         .ticks(10)
+        .tickFormat((x) => formatTick(x));
 
       svg.append('g')
         .call(yAxis)
       svg.append('g')
         .call(xAxis)
         .attr('transform', `translate(0, ${h})`)
+
+      // svg.append("text")
+      //   .attr("class", "y label")
+      //   .attr("text-anchor", "end")
+      //   .attr("y", -50)
+      //   .attr("x", -100)
+      //   .attr("dy", ".75em")
+      //   .attr("transform", "rotate(-90)")
+      //   .text(yLabel.toString());
 
       svg.selectAll('.line')
         .data([yData])

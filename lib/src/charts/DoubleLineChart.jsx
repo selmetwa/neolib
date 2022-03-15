@@ -49,7 +49,7 @@ const DoubleLineChart = ({
         .select(svgRef.current)
         .attr("width", w)
         .attr("height", h)
-        .style("background", "#f5f5f5")
+        .style("background", "transparent")
         .style("margin-bottom", "50")
         .style("overflow", "visible");
 

@@ -6,12 +6,12 @@ import "./singleCharts.css";
 const SingleLineChartsWrapper = () => (
   <section className='singleCharts'>
     {singleLineCharts.map((obj, i) => {
-      const { title, fileName, time, yValue } = obj;
+      const { title, fileName, time, yValue, yLabel } = obj;
       console.log('i: ', i)
       const color = i === 0 || i === 3 ? 'dark' : 'light'
       return (
         <div className={`chart ${color}`}>
-          <SingleLineChart {...{ title, fileName, time, yValue }} />
+          <SingleLineChart {...{ title, fileName, time, yValue, yLabel }} />
         </div>
       );
     })}

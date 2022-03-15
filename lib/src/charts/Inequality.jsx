@@ -5,7 +5,7 @@ import "../wealth.css";
 
 const Inequality = () => {
   const [unit, setUnit] = useState('Adults');
-  const [metric, setMetric] = useState('Total Pretax Income (nominal $)');
+  const [metric, setMetric] = useState('Disposable Income Per Unit (nominal $)');
 
   const [activeGroups, setGroups] = useState(['Top 0.01%', 'Top 0.1%', 'Top 1%', 'Top 10%', 'Middle 40%', 'Bottom 50%'])
   const groups = ['Top 0.01%', 'Top 0.1%', 'Top 1%', 'Top 10%', 'Middle 40%', 'Bottom 50%']
@@ -113,8 +113,31 @@ const Inequality = () => {
         .ticks(15)
         .tickFormat(i => i + 1)
 
+        const T = 1000000000000;
+        const B = 1000000000;
+        const M = 1000000
+        const K = 1000;
+
+        function numFormatter(num) {
+          if(num > 999 && num < M){
+              return (num/1000).toFixed(0) + 'K'; // convert to K for number from > 1000 < 1 million 
+          }else if(num > M && num < B){
+              return (num/M).toFixed(0) + 'M'; // convert to M for number from > 1 million 
+          }
+          else if (num > B && num < T) {
+            return (num/B).toFixed(0) + 'B'
+          }
+          else if (num > T) {
+            return (num/T).toFixed(0) + 'T'
+          }
+          else if(num < 900){
+              return num; // if value < 1000, nothing to do
+          }
+      }
+
       const yAxis = d3.axisLeft(yScale)
         .ticks(20)
+        .ticks(20).tickFormat(x => `$${numFormatter(x)}`)
 
       svg.append('g')
         .call(yAxis)
@@ -139,24 +162,9 @@ const Inequality = () => {
     <svg ref={svgRef} className="inequality-chart"></svg>
     <aside className='aside'>
       <div className='aside-text'>
-        <h1>Wealth Growth</h1>
+        <h1>Inequality</h1>
         <h3>From 1976 to 2021</h3>
       </div>
-      <div className='selects'>
-        <select onChange={handleUpdateUnit}>
-          <option value={"Adults"}>Adults</option>
-          <option value={"Households"}>Households</option>
-        </select>
-        <select onChange={handleUpdateShare}>
-          <option value={"Total Pretax Income (nominal $)"}>
-          Total Pretax Income (nominal $)
-          </option>
-          <option value={"Factor Income Per Unit (nominal $)"}>Factor Income Per Unit (nominal $)</option>
-          <option value={"Disposable Income Per Unit (nominal $)"}>Disposable Income Per Unit (nominal $)</option>
-          <option value={"Total Disposable Income (nominal $)"}>Total Disposable Income (nominal $)</option>
-        </select>
-      </div>
-
       <div className='checkboxes'>
         {groups.map((group) => {
           const isChecked = activeGroups.includes(group);

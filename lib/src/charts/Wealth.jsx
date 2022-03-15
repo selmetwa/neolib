@@ -6,7 +6,7 @@ import "../wealth.css";
 const NewTest = () => {
   const [unit, setUnit] = useState("Adults");
   const [metric, setMetric] = useState("Total Wealth (nominal $)");
-
+  // const [yLabel, setYLabel] = useState('')
   const [activeGroups, setGroups] = useState([
     "Total",
     "Top 0.01%",
@@ -70,7 +70,7 @@ const NewTest = () => {
     d3.csv("./public/wealth.csv").then((data) => {
       let intViewportWidth = window.innerWidth;
 
-      const w = intViewportWidth / 2;
+      const w = intViewportWidth / 1.5;
       const h = window.innerHeight / 1.5;
 
       const all = data.map((d) => d[metric]);
@@ -79,7 +79,7 @@ const NewTest = () => {
         .map((d) => Number(d[metric]));
       const topOnePercent = data
         .filter((d) => d["Group"] === "Top 1%" && d["Unit"] === unit)
-        .map((d) =>  Number(d[metric]));
+        .map((d) => Number(d[metric]));
       const top0PointOnePercent = data
         .filter((d) => d["Group"] === "Top 0.1%" && d["Unit"] === unit)
         .map((d) => Number(d[metric]));
@@ -108,8 +108,10 @@ const NewTest = () => {
       // );
       // const groupsToRenderData = groupsToRender.map(g => [...g.group]).flat()
 
-      const groupsToRender = groups.filter(g => activeGroups.includes(g.name))
-      const groupsToRenderData = groupsToRender.map(g => [...g.group]).flat()
+      const groupsToRender = groups.filter((g) =>
+        activeGroups.includes(g.name)
+      );
+      const groupsToRenderData = groupsToRender.map((g) => [...g.group]).flat();
 
       const svg = d3
         .select(svgRef.current)
@@ -139,10 +141,59 @@ const NewTest = () => {
         .ticks(15)
         .tickFormat((i) => i + 1);
 
-      const yAxis = d3.axisLeft(yScale).ticks(20);
+      const T = 1000000000000;
+      const B = 1000000000;
+      const M = 1000000;
+      const K = 1000;
+
+      function numFormatter(num) {
+        if (num > 999 && num < M) {
+          return (num / 1000).toFixed(0) + "K"; // convert to K for number from > 1000 < 1 million
+        } else if (num > M && num < B) {
+          return (num / M).toFixed(0) + "M"; // convert to M for number from > 1 million
+        } else if (num > B && num < T) {
+          return (num / B).toFixed(0) + "B";
+        } else if (num > T) {
+          return (num / T).toFixed(0) + "T";
+        } else if (num < 900) {
+          return num; // if value < 1000, nothing to do
+        }
+      }
+
+      const formatTick = (x) => {
+        if (metric === "Total Wealth (nominal $)") {
+          return `$${numFormatter(x)}`
+        }
+
+        return `${(x * 100).toString().slice(0, 2)}%`;
+      };
+
+      const yAxis = d3
+        .axisLeft(yScale)
+        .ticks(20)
+        .tickFormat((x) => formatTick(x));
 
       svg.append("g").call(yAxis);
+
       svg.append("g").call(xAxis).attr("transform", `translate(0, ${h})`);
+
+      const generateYLabel = () => {
+        if (metric === "Total Wealth (nominal $)") {
+          return "Total Real Wealth";
+        }
+
+        return "Share of Total Wealth";
+      };
+
+      svg
+        .append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", -65)
+        .attr("x", -100)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text(generateYLabel());
 
       groupsToRender.forEach((group, i) => {
         svg
@@ -162,7 +213,7 @@ const NewTest = () => {
       <svg ref={svgRef}></svg>
       <aside className='aside'>
         <div className='aside-text'>
-          <h1>Wealth Growth</h1>
+          <h1>Wealth Growth by Class</h1>
           <h3>From 1976 to 2021</h3>
         </div>
         <div className='selects'>
