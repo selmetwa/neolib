@@ -1,16 +1,16 @@
 .wrapper {
-  width: 100%;
   display: flex;
   flex-direction: row;
-  margin: 5em auto;
 }
 
 .big-chart {
-  width: 100%;
+  width: 75%;
+  margin: 5em auto;
 }
 
 .inequality-chart {
-  width: 100%;
+  width: 75%;
+  margin: 5em auto;
 }
 
 @media only screen and (max-width: 900px) {
@@ -19,10 +19,10 @@
     flex-direction: column-reverse;
   }
   .big-chart {
-    width: 100%;
+    width: 90%;
   }
   .inequality-chart {
-    width: 100%;
+    width: 90%;
   }
 }
 

@@ -7,11 +7,6 @@
   width: 80%;
 }
 
-
-/* .double-title {
-  border: 1px solid red;
-} */
-
 .double-checkboxes {
   display: flex;
   flex-direction: row;
@@ -24,5 +19,4 @@
   flex-direction: row;
   align-items: center;
   font-weight: 700;
-  gap: 0.5em;
 }

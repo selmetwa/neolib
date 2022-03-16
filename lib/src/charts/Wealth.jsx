@@ -111,7 +111,7 @@ const NewTest = () => {
         .select(svgRef.current)
         .attr("width", w)
         .attr("height", h)
-        .style("background", "#f5f5f5")
+        .style("background", "transparent")
         .style("overflow", "visible");
 
       const xScale = d3
