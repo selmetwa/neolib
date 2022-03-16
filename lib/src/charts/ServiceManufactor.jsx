@@ -11,7 +11,7 @@ const ServiceManufactor = () => {
   useEffect(() => {
     d3.csv(`../public/service.csv`).then((data1) => {
       d3.csv(`../public/manufactor.csv`).then((data2) => {
-        const w = window.innerWidth / 4;
+        // const w = window.innerWidth / 4;
         const h = window.innerHeight / 3;
 
         const years = [...new Set(data1.map((d) => d["date"].slice(0, 4)))];
@@ -40,11 +40,13 @@ const ServiceManufactor = () => {
         setGroups(g);
         setYears(years);
 
+        const w = parseInt(d3.select(svgRef.current).style('width'), 10)
+
         const svg = d3
           .select(svgRef.current)
           .attr("width", w)
           .attr("height", h)
-          .style("background", "#f5f5f5")
+          .style("background", "transparent")
           .style("margin-bottom", "50")
           .style("overflow", "visible");
 

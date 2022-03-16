@@ -1,6 +1,10 @@
 .doubleLineChart {
   background-color: #fafafa;
-  padding: 1.5em;
+  padding: 1em;
+}
+
+.doubleLineChart svg {
+  width: 80%;
 }
 
 
