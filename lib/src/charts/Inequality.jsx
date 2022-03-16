@@ -11,14 +11,13 @@ const Inequality = () => {
   const groups = ['Top 0.01%', 'Top 0.1%', 'Top 1%', 'Top 10%', 'Middle 40%', 'Bottom 50%']
 
   const [colors] = useState({
-    // 'Total': 'red',
-    'Top 0.01%': 'blue',
-    'Top 1%': 'green',
-    'Top 10%': 'purple',
-    'Bottom 50%': 'orange',
-    'Middle 40%': 'brown',
-    'Top 0.1%': 'black'
-  })
+    "Top 0.01%": "#e66f0e",
+    "Top 1%": "#04c585",
+    "Top 10%": "#e52207",
+    "Bottom 50%": "#009ec1",
+    "Middle 40%": "#d72d79 ",
+    "Top 0.1%": "black",
+  });
 
   const svgRef = useRef();
 
@@ -54,7 +53,7 @@ const Inequality = () => {
     d3.csv('./public/inequality.csv').then(data => {
       let intViewportWidth = window.innerWidth;
 
-      const w = intViewportWidth / 2;
+      const w = intViewportWidth / 1.65;
       const h = window.innerHeight / 1.5;
 
       const all = data.map(d => d[metric])
@@ -86,7 +85,6 @@ const Inequality = () => {
         .attr('width', w)
         .attr('height', h)
         .style('background', '#f5f5f5')
-        .style('margin-top', '50')
         .style('margin-bottom', '50')
         .style('overflow', 'visible')
 
@@ -121,13 +119,13 @@ const Inequality = () => {
         function numFormatter(num) {
           if(num > 999 && num < M){
               return (num/1000).toFixed(0) + 'K'; // convert to K for number from > 1000 < 1 million 
-          }else if(num > M && num < B){
+          }else if(num >= M && num < B){
               return (num/M).toFixed(0) + 'M'; // convert to M for number from > 1 million 
           }
-          else if (num > B && num < T) {
+          else if (num >= B && num < T) {
             return (num/B).toFixed(0) + 'B'
           }
-          else if (num > T) {
+          else if (num >= T) {
             return (num/T).toFixed(0) + 'T'
           }
           else if(num < 900){
@@ -145,6 +143,16 @@ const Inequality = () => {
         .call(xAxis)
         .attr('transform', `translate(0, ${h})`)
 
+        svg
+        .append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", -65)
+        .attr("x", -100)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text('Average Real Disposable Income');
+
       groupsToRender.forEach((group, i) => {
         svg.selectAll('.line')
           .data([group.group])
@@ -152,7 +160,7 @@ const Inequality = () => {
           .attr('d', d => generateScaledLine(d))
           .attr('fill', 'none')
           .attr('stroke', colors[group.name])
-          .attr("stroke-width", 1.5)
+          .attr("stroke-width", 2)
       })
     })
   }, [unit, metric, activeGroups])
@@ -162,8 +170,7 @@ const Inequality = () => {
     <svg ref={svgRef} className="inequality-chart"></svg>
     <aside className='aside'>
       <div className='aside-text'>
-        <h1>Inequality</h1>
-        <h3>From 1976 to 2021</h3>
+        <h1>Real Disposable Income</h1>
       </div>
       <div className='checkboxes'>
         {groups.map((group) => {

@@ -33,8 +33,8 @@ const ServiceManufactor = () => {
         );
 
         const g = [
-          { group: service, color: "blue", name: "Service" },
-          { group: manufactor, color: "red", name: "Manufactoring" },
+          { group: service, color: "#d83933", name: "Service" },
+          { group: manufactor, color: "#15143a", name: "Manufactoring" },
         ];
 
         setGroups(g);
@@ -82,7 +82,7 @@ const ServiceManufactor = () => {
             .attr("d", (d) => generateScaledLine(d))
             .attr("fill", "none")
             .attr("stroke", group.color)
-            .attr("stroke-width", 1.5);
+            .attr("stroke-width", 2);
         });
       });
     });
@@ -91,7 +91,7 @@ const ServiceManufactor = () => {
   if (groups && years) {
     return (
       <div className='doubleLineChart dark'>
-        <h3 className="double-title">Service jobs</h3>
+        <h3 className="double-title">Service vs Manufactoring jobs</h3>
         <div className="double-checkboxes">
           {groups.map(group => {
             return (

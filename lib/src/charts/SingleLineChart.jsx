@@ -18,7 +18,6 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
         .attr('width', w)
         .attr('height', h)
         .style('background', 'transparent')
-        // .style('border', '1px solid #ccc')
         .style('margin-bottom', '50px')
         .style('overflow', 'visible')
 
@@ -78,15 +77,6 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
       svg.append('g')
         .call(xAxis)
         .attr('transform', `translate(0, ${h})`)
-
-      // svg.append("text")
-      //   .attr("class", "y label")
-      //   .attr("text-anchor", "end")
-      //   .attr("y", -50)
-      //   .attr("x", -100)
-      //   .attr("dy", ".75em")
-      //   .attr("transform", "rotate(-90)")
-      //   .text(yLabel.toString());
 
       svg.selectAll('.line')
         .data([yData])

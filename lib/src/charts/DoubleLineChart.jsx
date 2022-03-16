@@ -38,8 +38,8 @@ const DoubleLineChart = ({
       const max = [...lineOneData].sort((a, b) => b - a)[0];
 
       const g = [
-        { group: lineOneData, color: "red", name: lineOneName },
-        { group: lineTwoData, color: "blue", name: lineTwoName },
+        { group: lineOneData, color: "#d83933", name: lineOneName },
+        { group: lineTwoData, color: "#15143a", name: lineTwoName },
       ];
 
       setGroups(g);
@@ -77,7 +77,8 @@ const DoubleLineChart = ({
         .ticks(10)
         .tickFormat((i) => i + 1);
 
-      const yAxis = d3.axisLeft(yScale).ticks(10);
+        ;
+        const yAxis = d3.axisLeft(yScale).ticks(10).tickFormat((x) => `${x}%`);
 
       svg.append("g").call(yAxis);
       svg.append("g").call(xAxis).attr("transform", `translate(0, ${h})`);
@@ -90,7 +91,7 @@ const DoubleLineChart = ({
           .attr("d", (d) => generateScaledLine(d))
           .attr("fill", "none")
           .attr("stroke", group.color)
-          .attr("stroke-width", 1.5);
+          .attr("stroke-width", 2);
       });
     });
   }, []);

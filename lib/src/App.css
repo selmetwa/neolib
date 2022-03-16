@@ -2,6 +2,8 @@
   text-align: center;
   margin: 0;
   padding: 0;
+  border: 15px solid #3c3b6e;
+  font-family: 'Open Sans', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .usa-stars {
@@ -25,9 +27,19 @@
 
 .text h1 {
   font-size: 3em;
+  font-weight: 800;
 }
 
 .text h3 {
   font-size: 1.75em;
   font-weight: 100;
+}
+
+.description {
+  width: 40%;
+  text-align: left;
+  margin: 2em auto;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #15143a;
 }

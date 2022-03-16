@@ -6,7 +6,6 @@ import "../wealth.css";
 const NewTest = () => {
   const [unit, setUnit] = useState("Adults");
   const [metric, setMetric] = useState("Total Wealth (nominal $)");
-  // const [yLabel, setYLabel] = useState('')
   const [activeGroups, setGroups] = useState([
     "Total",
     "Top 0.01%",
@@ -17,7 +16,6 @@ const NewTest = () => {
     "Bottom 50%",
   ]);
   const groups = [
-    // "Total",
     "Top 0.01%",
     "Top 0.1%",
     "Top 1%",
@@ -27,12 +25,11 @@ const NewTest = () => {
   ];
 
   const [colors] = useState({
-    Total: "red",
-    "Top 0.01%": "blue",
-    "Top 1%": "green",
-    "Top 10%": "red",
-    "Bottom 50%": "orange",
-    "Middle 40%": "brown",
+    "Top 0.01%": "#e66f0e",
+    "Top 1%": "#04c585",
+    "Top 10%": "#e52207",
+    "Bottom 50%": "#009ec1",
+    "Middle 40%": "#d72d79 ",
     "Top 0.1%": "black",
   });
 
@@ -70,7 +67,7 @@ const NewTest = () => {
     d3.csv("./public/wealth.csv").then((data) => {
       let intViewportWidth = window.innerWidth;
 
-      const w = intViewportWidth / 1.5;
+      const w = intViewportWidth / 1.65;
       const h = window.innerHeight / 1.5;
 
       const all = data.map((d) => d[metric]);
@@ -102,11 +99,6 @@ const NewTest = () => {
         { group: middleFourtyPercent, color: "yellow", name: "Middle 40%" },
         { group: top0PointOnePercent, color: "black", name: "Top 0.1%" },
       ];
-
-      // const groupsToRender = groups.filter((g) =>
-      //   activeGroups.includes(g.name)
-      // );
-      // const groupsToRenderData = groupsToRender.map(g => [...g.group]).flat()
 
       const groupsToRender = groups.filter((g) =>
         activeGroups.includes(g.name)
@@ -203,7 +195,7 @@ const NewTest = () => {
           .attr("d", (d) => generateScaledLine(d))
           .attr("fill", "none")
           .attr("stroke", colors[group.name])
-          .attr("stroke-width", 1.5);
+          .attr("stroke-width", 2);
       });
     });
   }, [unit, metric, activeGroups]);
