@@ -67,7 +67,7 @@ const NewTest = () => {
     d3.csv("./public/wealth.csv").then((data) => {
       let intViewportWidth = window.innerWidth;
 
-      const w = intViewportWidth / 1.65;
+      // const w = intViewportWidth / 1.65;
       const h = window.innerHeight / 1.5;
 
       const all = data.map((d) => d[metric]);
@@ -104,6 +104,8 @@ const NewTest = () => {
         activeGroups.includes(g.name)
       );
       const groupsToRenderData = groupsToRender.map((g) => [...g.group]).flat();
+
+      const w = parseInt(d3.select(svgRef.current).style('width'), 10) 
 
       const svg = d3
         .select(svgRef.current)
@@ -202,11 +204,10 @@ const NewTest = () => {
 
   return (
     <section className='wrapper'>
-      <svg ref={svgRef}></svg>
+      <svg ref={svgRef} className="big-chart"></svg>
       <aside className='aside'>
         <div className='aside-text'>
           <h1>Wealth Growth by Class</h1>
-          <h3>From 1976 to 2021</h3>
         </div>
         <div className='selects'>
           <select onChange={handleUpdateUnit}>
@@ -230,6 +231,7 @@ const NewTest = () => {
                   type='checkbox'
                   checked={isChecked}
                   value={group}
+                  className="box"
                   onChange={handleUpdateCheckboxes}
                 />
                 <div

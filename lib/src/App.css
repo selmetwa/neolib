@@ -2,12 +2,10 @@
   text-align: center;
   margin: 0;
   padding: 0;
-  border: 15px solid #3c3b6e;
   font-family: 'Open Sans', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 main {
-  border: 1px solid red;
   max-width: 1360px;
   margin: 0 auto;
 }
@@ -27,7 +25,6 @@ main {
   padding: 0;
   color: #fafafa;
   background: #3c3b6e;
-  padding: 0.75em 5em;
   text-align: left;
 }
 
@@ -48,4 +45,13 @@ main {
   font-size: 1.5em;
   font-weight: 600;
   color: #15143a;
+}
+
+@media only screen and (max-width: 900px) {
+  main {
+    width: 100%;
+  }
+  .description {
+    width: 90%;
+  }
 }

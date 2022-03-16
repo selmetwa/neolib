@@ -8,12 +8,13 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
 
   useEffect(() => {
     d3.csv(`./public/${fileName}.csv`).then(data => {
-      const w = window.innerWidth / 3;
+      // const w = window.innerWidth / 3;
       const h = window.innerHeight / 2.5;
 
       const yData = data.map(d => Number(d[yValue]))
       const years = data.map(d => d[time].slice(0, 4))
 
+      const w = parseInt(d3.select(svgRef.current).style('width'), 10) 
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)
@@ -43,18 +44,14 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
         .ticks(10)
         .tickFormat(i => i + 1)
 
-      // const formatTick = () => {
-      //   if ()
-      // }
-
       const T = 10000
       const B = 1000;
 
       function numFormatter(num) {
-        if(num > B && num < T){
-            return (num).toFixed(0).slice(0,2) + 'B'; // convert to K for number from > 1000 < 1 million 
-        }else if(num > T){
-            return (num).toFixed(0).slice(0,2) + 'T'; // convert to M for number from > 1 million 
+        if(num >= B && num < T){
+            return (num).toFixed(0).slice(0,2) + 'B'; 
+        }else if(num >= T){
+            return (num).toFixed(0).slice(0,2) + 'T'; 
         }
     }
 

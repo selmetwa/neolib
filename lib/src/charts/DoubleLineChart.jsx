@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
-// import '../wealth.css';
 import "../doubleLineChart.css";
 
 const DoubleLineChart = ({
@@ -21,7 +20,6 @@ const DoubleLineChart = ({
   useEffect(() => {
     d3.csv(`../public/${fileName}.csv`).then((data) => {
 
-      // const w = window.innerWidth / 4;
       const h = window.innerHeight / 3;
 
       const years = data.map((d) => d[time]);
@@ -50,8 +48,6 @@ const DoubleLineChart = ({
 
       const svg = d3
         .select(svgRef.current)
-          // get the current width of the div where the chart appear, and attribute it to Svg
-        // .attr("width", w)
         .attr("width", w)
         .attr("height", h)
         .style("background", "transparent")

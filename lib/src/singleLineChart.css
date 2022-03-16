@@ -2,6 +2,10 @@
   margin-top: 50px;
 }
 
+.singleLineChart svg {
+  width: 85%;
+}
+
 h3 {
   margin: 0 0 16px 0;
   padding: 0;
