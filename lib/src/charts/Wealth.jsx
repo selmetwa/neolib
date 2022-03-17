@@ -64,7 +64,7 @@ const NewTest = () => {
   };
 
   useEffect(() => {
-    d3.csv("./dist/wealth.csv").then((data) => {
+    d3.csv("https://raw.githubusercontent.com/sherif-ffs/lib/master/lib/data/wealth.csv?token=GHSAT0AAAAAABSQMP6DWPZ5NP2PTEVXG6AKYRSTBIQ").then((data) => {
       const all = data.map((d) => d[metric]);
       const topTenPercent = data
         .filter((d) => d["Group"] === "Top 10%" && d["Unit"] === unit)
