@@ -5,7 +5,7 @@ const Millitary = () => {
   const svgRef = useRef();
 
   useEffect(() => {
-    d3.csv('./data/millitary.csv').then(data => {
+    d3.csv('./dist/millitary.csv').then(data => {
       console.log('bombs: ', data)
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
