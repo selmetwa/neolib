@@ -64,12 +64,7 @@ const NewTest = () => {
   };
 
   useEffect(() => {
-    d3.csv("./public/wealth.csv").then((data) => {
-      let intViewportWidth = window.innerWidth;
-
-      // const w = intViewportWidth / 1.65;
-      // const h = window.innerHeight / 1.5;
-
+    d3.csv("./data/wealth.csv").then((data) => {
       const all = data.map((d) => d[metric]);
       const topTenPercent = data
         .filter((d) => d["Group"] === "Top 10%" && d["Unit"] === unit)

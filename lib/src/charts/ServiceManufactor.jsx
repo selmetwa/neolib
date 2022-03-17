@@ -9,11 +9,8 @@ const ServiceManufactor = () => {
   const [years, setYears] = useState(null);
 
   useEffect(() => {
-    d3.csv(`../public/service.csv`).then((data1) => {
-      d3.csv(`../public/manufactor.csv`).then((data2) => {
-        // const w = window.innerWidth / 4;
-        // const h = window.innerHeight / 3;
-
+    d3.csv(`../data/service.csv`).then((data1) => {
+      d3.csv(`../data/manufactor.csv`).then((data2) => {
         const years = [...new Set(data1.map((d) => d["date"].slice(0, 4)))];
         const manufactor = data2.map(
           (d) =>

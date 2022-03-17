@@ -5,7 +5,7 @@ const Unions = () => {
   const svgRef = useRef();
 
   useEffect(() => {
-    d3.csv('./public/debt.csv').then(data => {
+    d3.csv('./data/debt.csv').then(data => {
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
       const debt = data.map(d => d['FYGFD'])

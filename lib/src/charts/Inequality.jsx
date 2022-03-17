@@ -66,7 +66,7 @@ const Inequality = () => {
   };
 
   useEffect(() => {
-    d3.csv("./public/inequality.csv").then((data) => {
+    d3.csv("./data/inequality.csv").then((data) => {
       let intViewportWidth = window.innerWidth;
 
       // const w = intViewportWidth / 1.65;

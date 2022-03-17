@@ -7,10 +7,7 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
   const svgRef = useRef();
 
   useEffect(() => {
-    d3.csv(`./public/${fileName}.csv`).then(data => {
-      // const w = window.innerWidth / 3;
-      // const h = window.innerHeight / 2.5;
-
+    d3.csv(`./data/${fileName}.csv`).then(data => {
       const yData = data.map(d => Number(d[yValue]))
       const years = data.map(d => d[time].slice(0, 4))
 

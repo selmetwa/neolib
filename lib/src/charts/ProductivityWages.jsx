@@ -8,7 +8,7 @@ const ProductivityWages = () => {
   const [groups, setGroups] = useState(null);
 
   useEffect(() => {
-    d3.csv('../public/productivity_wages.csv').then(data => {
+    d3.csv('../data/productivity_wages.csv').then(data => {
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
 
