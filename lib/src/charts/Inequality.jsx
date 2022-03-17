@@ -66,7 +66,12 @@ const Inequality = () => {
   };
 
   useEffect(() => {
-    d3.csv('https://raw.githubusercontent.com/sherif-ffs/lib/master/lib/data/inequality.csv?token=GHSAT0AAAAAABSQMP6CJMQSO2KS26U4K6UYYRSTAKQ').then((data) => {
+    d3.csv("./dist/inequality.csv").then((data) => {
+      let intViewportWidth = window.innerWidth;
+
+      // const w = intViewportWidth / 1.65;
+      // const h = window.innerHeight / 1.5;
+
       const all = data.map((d) => d[metric]);
       const total = data
         .filter((d) => d["Group"] === "Total" && d["Unit"] === unit)

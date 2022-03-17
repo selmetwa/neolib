@@ -9,8 +9,8 @@ const ServiceManufactor = () => {
   const [years, setYears] = useState(null);
 
   useEffect(() => {
-    d3.csv(`https://raw.githubusercontent.com/sherif-ffs/lib/master/lib/data/service.csv?token=GHSAT0AAAAAABSQMP6D2A6VKSXQOIBDYXYEYRSTFHQ`).then((data1) => {
-      d3.csv(`https://raw.githubusercontent.com/sherif-ffs/lib/master/lib/data/manufactor.csv?token=GHSAT0AAAAAABSQMP6CEKDWXB4YL32ZQAQCYRSTFPQ`).then((data2) => {
+    d3.csv(`/../dist/service.csv`).then((data1) => {
+      d3.csv(`/../dist/manufactor.csv`).then((data2) => {
         const years = [...new Set(data1.map((d) => d["date"].slice(0, 4)))];
         const manufactor = data2.map(
           (d) =>
