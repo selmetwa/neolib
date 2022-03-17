@@ -93,6 +93,7 @@ const ServiceManufactor = () => {
 
   if (groups && years) {
     return (
+      <>
       <div className='doubleLineChart dark'>
         <h3 className="double-title">Service vs Manufactoring jobs</h3>
         <div className="double-checkboxes">
@@ -106,7 +107,13 @@ const ServiceManufactor = () => {
           })}
         </div>
         <svg ref={svgRef} />
+      <p style={{
+        textAlign: 'left',
+        fontSize: '12px',
+        marginTop: '20px'
+      }}>Source: Bureau of Economic Analysis</p>
       </div>
+      </>
     );
   }
 
