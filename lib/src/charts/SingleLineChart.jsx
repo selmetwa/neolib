@@ -9,12 +9,13 @@ const SingleLineChart = ({ title, fileName, yValue, time, yLabel }) => {
   useEffect(() => {
     d3.csv(`./public/${fileName}.csv`).then(data => {
       // const w = window.innerWidth / 3;
-      const h = window.innerHeight / 2.5;
+      // const h = window.innerHeight / 2.5;
 
       const yData = data.map(d => Number(d[yValue]))
       const years = data.map(d => d[time].slice(0, 4))
 
-      const w = parseInt(d3.select(svgRef.current).style('width'), 10) 
+      const w = parseInt(d3.select(svgRef.current).style('width'), 10);
+      const h = parseInt(d3.select(svgRef.current).style('height'), 10);
       const svg = d3.select(svgRef.current)
         .attr('width', w)
         .attr('height', h)

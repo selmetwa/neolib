@@ -4,6 +4,7 @@
 
 .singleLineChart svg {
   width: 85%;
+  height: 300px;
 }
 
 h3 {

@@ -68,7 +68,7 @@ const NewTest = () => {
       let intViewportWidth = window.innerWidth;
 
       // const w = intViewportWidth / 1.65;
-      const h = window.innerHeight / 1.5;
+      // const h = window.innerHeight / 1.5;
 
       const all = data.map((d) => d[metric]);
       const topTenPercent = data
@@ -105,7 +105,8 @@ const NewTest = () => {
       );
       const groupsToRenderData = groupsToRender.map((g) => [...g.group]).flat();
 
-      const w = parseInt(d3.select(svgRef.current).style('width'), 10) 
+      const w = parseInt(d3.select(svgRef.current).style('width'), 10);
+      const h = parseInt(d3.select(svgRef.current).style('height'), 10);
 
       const svg = d3
         .select(svgRef.current)

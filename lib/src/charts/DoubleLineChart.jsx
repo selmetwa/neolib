@@ -20,7 +20,7 @@ const DoubleLineChart = ({
   useEffect(() => {
     d3.csv(`../public/${fileName}.csv`).then((data) => {
 
-      const h = window.innerHeight / 3;
+      // const h = window.innerHeight / 3;
 
       const years = data.map((d) => d[time]);
       const lineOneData = data.map((d) =>
@@ -45,6 +45,7 @@ const DoubleLineChart = ({
       setYears(years);
 
       const w = parseInt(d3.select(svgRef.current).style('width'), 10)
+      const h = parseInt(d3.select(svgRef.current).style('height'), 10)
 
       const svg = d3
         .select(svgRef.current)

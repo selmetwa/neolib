@@ -70,7 +70,7 @@ const Inequality = () => {
       let intViewportWidth = window.innerWidth;
 
       // const w = intViewportWidth / 1.65;
-      const h = window.innerHeight / 1.5;
+      // const h = window.innerHeight / 1.5;
 
       const all = data.map((d) => d[metric]);
       const total = data
@@ -95,10 +95,6 @@ const Inequality = () => {
         .filter((d) => d["Group"] === "Bottom 50%" && d["Unit"] === unit)
         .map((d) => Number(d[metric]));
 
-      console.log("all: ", all);
-      console.log("min all: ", d3.min(all));
-      console.log("max all: ", d3.max(all));
-
       const groups = [
         { group: topOneTenthOfOnePercent, color: "blue", name: "Top 0.01%" },
         { group: topOnePercent, color: "red", name: "Top 1%" },
@@ -114,6 +110,7 @@ const Inequality = () => {
       const groupsToRenderData = groupsToRender.map((g) => [...g.group]).flat();
 
       const w = parseInt(d3.select(svgRef.current).style("width"), 10);
+      const h = parseInt(d3.select(svgRef.current).style("height"), 10);
 
       const svg = d3
         .select(svgRef.current)
