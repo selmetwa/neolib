@@ -18,9 +18,11 @@ function App() {
       <main>
         <p className='description'>
           Neoliberalism is used to refer to market-oriented
-          reform policies such as "eliminating price controls, deregulating
-          capital markets, lowering trade barriers" and reducing, especially
+          reform policies such as "eliminating price controls, deregulation, lowering trade barriers" and reducing, especially
           through privatization and austerity, state influence in the economy.{" "}
+        </p>
+        <p className='description'>
+          Neoliberal policies began to takehold in the U.S. in the 70s and 80s.{" "}
         </p>
         <Wealth />
         <Inequality />
