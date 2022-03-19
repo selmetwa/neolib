@@ -66,12 +66,7 @@ const Inequality = () => {
   };
 
   useEffect(() => {
-    d3.csv("./data/inequality.csv").then((data) => {
-      let intViewportWidth = window.innerWidth;
-
-      // const w = intViewportWidth / 1.65;
-      // const h = window.innerHeight / 1.5;
-
+    d3.csv("https://lib-data-files.s3.amazonaws.com/data/inequality.csv").then((data) => {
       const all = data.map((d) => d[metric]);
       const total = data
         .filter((d) => d["Group"] === "Total" && d["Unit"] === unit)

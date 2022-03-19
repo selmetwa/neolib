@@ -18,9 +18,7 @@ const DoubleLineChart = ({
   const [years, setYears] = useState(null);
 
   useEffect(() => {
-    d3.csv(`../data/${fileName}.csv`).then((data) => {
-
-      // const h = window.innerHeight / 3;
+    d3.csv(`https://lib-data-files.s3.amazonaws.com/data/${fileName}.csv`).then((data) => {
 
       const years = data.map((d) => d[time]);
       const lineOneData = data.map((d) =>
