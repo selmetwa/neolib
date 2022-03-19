@@ -8,7 +8,7 @@ const Productivity = () => {
   const [groups, setGroups] = useState(null);
 
   useEffect(() => {
-    d3.csv("../dist/productivity.csv").then((data) => {
+    d3.csv("../data/productivity.csv").then((data) => {
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
 

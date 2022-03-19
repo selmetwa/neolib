@@ -5,8 +5,7 @@ const Taxes = () => {
   const svgRef = useRef();
 
   useEffect(() => {
-    d3.csv('./dist/top_taxes.csv').then(data => {
-      console.log('taxes: ', data)
+    d3.csv('./data/top_taxes.csv').then(data => {
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
       const rate = data.map(d => d['Rate'])

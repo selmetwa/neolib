@@ -5,8 +5,7 @@ const Millitary = () => {
   const svgRef = useRef();
 
   useEffect(() => {
-    d3.csv('./dist/millitary.csv').then(data => {
-      console.log('bombs: ', data)
+    d3.csv('./data/millitary.csv').then(data => {
       const w = window.innerWidth / 2;
       const h = window.innerHeight / 1.5;
       const spending = data.map(d => Number(d[' Billions of US $']))

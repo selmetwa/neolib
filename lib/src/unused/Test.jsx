@@ -15,7 +15,7 @@ const Test = () => {
   const svg = useRef(null);
 
   useEffect(() => {
-    d3.csv('./dist/wealth.csv').then(data => {
+    d3.csv('./data/wealth.csv').then(data => {
       console.log('data: ', data);
       const total = data.filter(d => d['Group'] === group && d['Unit'] === 'Adults');
 
