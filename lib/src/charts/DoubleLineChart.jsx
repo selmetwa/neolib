@@ -18,8 +18,8 @@ const DoubleLineChart = ({
   const [years, setYears] = useState(null);
 
   useEffect(() => {
-    d3.csv(`https://lib-data-files.s3.amazonaws.com/data/${fileName}.csv`).then((data) => {
-
+    // https://neolib-data-files.s3.amazonaws.com/debt.csv
+    d3.csv(`https://neolib-data-files.s3.amazonaws.com/${fileName}.csv`).then((data) => {
       const years = data.map((d) => d[time]);
       const lineOneData = data.map((d) =>
         d[lineOne]
