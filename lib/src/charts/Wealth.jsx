@@ -64,7 +64,7 @@ const NewTest = () => {
   };
 
   useEffect(() => {
-    d3.csv("http://neolib-data-files.s3.amazonaws.com/wealth.csv").then((data) => {
+    d3.csv("https://neolib-data-files.s3.amazonaws.com/wealth.csv").then((data) => {
       const all = data.map((d) => d[metric]);
       const topTenPercent = data
         .filter((d) => d["Group"] === "Top 10%" && d["Unit"] === unit)

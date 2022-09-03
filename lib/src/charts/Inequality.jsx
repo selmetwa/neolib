@@ -66,7 +66,7 @@ const Inequality = () => {
   };
 
   useEffect(() => {
-    d3.csv("http://neolib-data-files.s3.amazonaws.com/inequality.csv").then((data) => {
+    d3.csv("https://neolib-data-files.s3.amazonaws.com/inequality.csv").then((data) => {
       const all = data.map((d) => d[metric]);
       const total = data
         .filter((d) => d["Group"] === "Total" && d["Unit"] === unit)
