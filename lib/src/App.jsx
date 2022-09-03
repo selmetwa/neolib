@@ -24,9 +24,9 @@ function App() {
         <p className='description'>
           Neoliberal policies began to takehold in the U.S. in the 70s and 80s.{" "}
         </p>
-        {/* <Wealth />
+        <Wealth />
         <Inequality />
-        <DoubleChartsWrapper /> */}
+        <DoubleChartsWrapper />
         <SingleLineChartsWrapper />
       </main>
       <footer>
